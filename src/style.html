@@ -1,0 +1,95 @@
+<html docType="html">
+    <head>
+        <style>
+       ul li{
+           display:inline;
+           border:1px solid blue;
+       }
+       div.container{
+           border:1px solid blue;
+       }
+       .content{
+          display:none;
+       }
+       div.active{
+           display:block;
+       }
+        </style>
+
+    </head>
+    <body>
+<!-- HTML页面布局 -->
+
+<ul id="nav">
+    <li id="s1">房产</li>
+    <li id="s2">家居</li>
+    <li id="s3">二手房</li>
+</ul>
+<div class="container">
+    <div id="c1" class="content">
+        275万购昌平邻铁三居 总价20万买一居
+    200万内购五环三居 140万安家东三环
+    北京首现零首付楼盘 53万购东5环50平
+    京楼盘直降5000 中信府 公园楼王现房
+    </div>
+    <div id="c2" class="content">
+        40平出租屋大改造 美少女的混搭小窝
+     经典清新简欧爱家 90平老房焕发新生
+     新中式的酷色温情 66平撞色活泼家居
+     瓷砖就像选好老婆 卫生间烟道的设计
+    </div>
+    <div id="c3" class="content">
+         通州豪华3居260万 二环稀缺2居250w甩
+     西3环通透2居290万 130万2居限量抢购
+     黄城根小学学区仅260万 121平70万抛!
+     独家别墅280万 苏州桥2居优惠价248万
+    </div>
+</div>
+        <script type="text/javascript">
+/*document.getElementById("nav").addEventListener("click", function(e) {
+	// e.target is the clicked element!
+	// If it was a list item
+
+	if(e.target && e.target.nodeName == "LI") {
+		// List item found!  Output the ID!
+		//console.log("List item ", e.target.id.replace("post-"), " was clicked!");
+
+        var eid = e.target.id.substr(1,1);
+        var list = document.getElementsByClassName("content");
+        for(var i=0; i < list.length; i++){
+            if(list[i].id.indexOf(eid) > 0)
+                list[i].classList.add("active");
+            else
+                list[i].classList.remove("active");
+        }
+	}
+});*/
+function solution() {
+    // write your code in Javascript
+    //
+    // you can access DOM Tree using DOM Object Model:
+    //    document.getElementByTagName
+    // or using jQuery:
+    //    $('some_tag')
+    var liList = $('li');
+    var maxLevel = 0;
+    $.each(liList, function(){getTopLevel($(this), 1);});
+    
+function getTopLevel(el,level){
+    var parent = el.closest('li');
+    if (parent != null){
+        getTopLevel(parent,level + 1);
+    }
+    else {
+        if(level > maxLevl){
+            maxLevel = level;
+        }   
+    }   
+}
+return maxLevel;
+}
+            solution();
+            
+        </script>
+    </body>
+</html>
